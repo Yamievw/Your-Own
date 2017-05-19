@@ -16,15 +16,9 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    // Let a user log in with email address and matching password.
     @IBAction func loginDidTouch(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error == nil {
@@ -32,7 +26,7 @@ class LogInViewController: UIViewController {
             
                 if Auth.auth().currentUser != nil {
                 
-                    self.performSegue(withIdentifier: "searchGIFViewController", sender: nil)
+                    self.performSegue(withIdentifier: "searchBooksViewController", sender: self)
                 }
             }
             else{
@@ -47,7 +41,7 @@ class LogInViewController: UIViewController {
         }
     }
     
-    
+    // Let a user register with a email adress and password.
     @IBAction func signupDidTouch(_ sender: Any) {
         let alertController = UIAlertController(title: "New user", message:
             "Create new account", preferredStyle: UIAlertControllerStyle.alert)
@@ -68,7 +62,7 @@ class LogInViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .default)
         
-        // Add the text field.
+        // Add the text field in alertview.
         alertController.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = ""
             textField.placeholder = "Enter email"
@@ -84,18 +78,4 @@ class LogInViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     
     }
-
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
