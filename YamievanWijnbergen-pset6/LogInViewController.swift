@@ -17,6 +17,12 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 
     // Let a user log in with email address and matching password.
     @IBAction func loginDidTouch(_ sender: Any) {
@@ -26,25 +32,26 @@ class LogInViewController: UIViewController {
             
                 if Auth.auth().currentUser != nil {
                 
-                    self.performSegue(withIdentifier: "searchBooksViewController", sender: self)
+                    self.performSegue(withIdentifier: "homeScreen", sender: self)
                 }
-            }
-            else{
-                // let user know he/she failed to login
-                let alertcontroller = UIAlertController(title: "Failed to login.", message: "Please, try again.",preferredStyle: UIAlertControllerStyle.alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                }
-                alertcontroller.addAction(OKAction)
-                self.present(alertcontroller, animated: true, completion:nil)
-                return
+//            } else {
+//                // let user know he/she failed to login
+//                let alertcontroller = UIAlertController(title: "Failed to login.", message: "Please, try again.",preferredStyle: UIAlertControllerStyle.alert)
+//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+//                }
+//                alertcontroller.addAction(OKAction)
+//                self.present(alertcontroller, animated: true, completion:nil)
+//                return
+//            }
+//        }
             }
         }
     }
     
     // Let a user register with a email adress and password.
     @IBAction func signupDidTouch(_ sender: Any) {
-        let alertController = UIAlertController(title: "New user", message:
-            "Create new account", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Register", message:
+            "Choose a password that contains at least 6 characters.", preferredStyle: UIAlertControllerStyle.alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { action in
             
@@ -76,6 +83,5 @@ class LogInViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
-    
     }
 }

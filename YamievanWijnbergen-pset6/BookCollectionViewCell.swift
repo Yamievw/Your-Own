@@ -1,5 +1,5 @@
 //
-//  GIFCollectionViewCell.swift
+//  BookCollectionViewCell.swift
 //  YamievanWijnbergen-pset6
 //
 //  Created by Yamie van Wijnbergen on 19/05/2017.
@@ -10,5 +10,6 @@ import UIKit
 
 class BookCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var BookImage: UIImageView!
+    @IBOutlet weak var bookTitle: UILabel!
+    @IBOutlet weak var bookImage: UIImageView!
 }

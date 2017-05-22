@@ -13,8 +13,12 @@
 		6C0C161F1ECEECA3001EF813 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C0C161D1ECEECA3001EF813 /* LaunchScreen.storyboard */; };
 		6C0C16271ECEF072001EF813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C0C16261ECEF072001EF813 /* GoogleService-Info.plist */; };
 		6C0C162F1ECEFFE5001EF813 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0C162E1ECEFFE5001EF813 /* LogInViewController.swift */; };
+		6C9ED95D1ED2E8D000843D55 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9ED95C1ED2E8D000843D55 /* Book.swift */; };
 		6CB44AE81ECF3AFA00BA4E75 /* SearchBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB44AE71ECF3AFA00BA4E75 /* SearchBooksViewController.swift */; };
 		6CB44AEA1ECF3B3D00BA4E75 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB44AE91ECF3B3D00BA4E75 /* BookCollectionViewCell.swift */; };
+		6CEF0C7A1ED17C6E00CB5099 /* BookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF0C791ED17C6E00CB5099 /* BookInfoViewController.swift */; };
+		6CEF0C7C1ED17CAA00CB5099 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF0C7B1ED17CAA00CB5099 /* BookmarksViewController.swift */; };
+		6CEF0C7E1ED17D3300CB5099 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF0C7D1ED17D3300CB5099 /* BookmarksTableViewCell.swift */; };
 		8C1C5B45CBC202CAB15EC9A1 /* Pods_YamievanWijnbergen_pset6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE37C3F2273B2FACBF4E426 /* Pods_YamievanWijnbergen_pset6.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +33,12 @@
 		6C0C16261ECEF072001EF813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C0C162E1ECEFFE5001EF813 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6C0C16351ECF080A001EF813 /* YamievanWijnbergen-pset6.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "YamievanWijnbergen-pset6.entitlements"; sourceTree = "<group>"; };
+		6C9ED95C1ED2E8D000843D55 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		6CB44AE71ECF3AFA00BA4E75 /* SearchBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBooksViewController.swift; sourceTree = "<group>"; };
 		6CB44AE91ECF3B3D00BA4E75 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		6CEF0C791ED17C6E00CB5099 /* BookInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfoViewController.swift; sourceTree = "<group>"; };
+		6CEF0C7B1ED17CAA00CB5099 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		6CEF0C7D1ED17D3300CB5099 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
 		78539BB52F05A4A91B8A422C /* Pods-YamievanWijnbergen-pset6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YamievanWijnbergen-pset6.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YamievanWijnbergen-pset6/Pods-YamievanWijnbergen-pset6.debug.xcconfig"; sourceTree = "<group>"; };
 		EC80786B59C945035737026B /* Pods-YamievanWijnbergen-pset6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YamievanWijnbergen-pset6.release.xcconfig"; path = "Pods/Target Support Files/Pods-YamievanWijnbergen-pset6/Pods-YamievanWijnbergen-pset6.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +88,10 @@
 				6C0C16141ECEECA3001EF813 /* AppDelegate.swift */,
 				6C0C162E1ECEFFE5001EF813 /* LogInViewController.swift */,
 				6CB44AE71ECF3AFA00BA4E75 /* SearchBooksViewController.swift */,
+				6C9ED95C1ED2E8D000843D55 /* Book.swift */,
+				6CEF0C791ED17C6E00CB5099 /* BookInfoViewController.swift */,
+				6CEF0C7B1ED17CAA00CB5099 /* BookmarksViewController.swift */,
+				6CEF0C7D1ED17D3300CB5099 /* BookmarksTableViewCell.swift */,
 				6CB44AE91ECF3B3D00BA4E75 /* BookCollectionViewCell.swift */,
 				6C0C16181ECEECA3001EF813 /* Main.storyboard */,
 				6C0C161B1ECEECA3001EF813 /* Assets.xcassets */,
@@ -229,7 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C9ED95D1ED2E8D000843D55 /* Book.swift in Sources */,
+				6CEF0C7C1ED17CAA00CB5099 /* BookmarksViewController.swift in Sources */,
+				6CEF0C7E1ED17D3300CB5099 /* BookmarksTableViewCell.swift in Sources */,
 				6CB44AE81ECF3AFA00BA4E75 /* SearchBooksViewController.swift in Sources */,
+				6CEF0C7A1ED17C6E00CB5099 /* BookInfoViewController.swift in Sources */,
 				6C0C162F1ECEFFE5001EF813 /* LogInViewController.swift in Sources */,
 				6C0C16151ECEECA3001EF813 /* AppDelegate.swift in Sources */,
 				6CB44AEA1ECF3B3D00BA4E75 /* BookCollectionViewCell.swift in Sources */,
