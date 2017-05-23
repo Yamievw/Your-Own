@@ -328,10 +328,17 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rU-a0-3Rr">
                                 <rect key="frame" x="335" y="627" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="20151129_565a5ec9629b6"/>
+                                <state key="normal" title="addBookmark" image="20151129_565a5ec9629b6"/>
                                 <connections>
                                     <action selector="bookmarkBook:" destination="Fmn-QC-Lpw" eventType="touchUpInside" id="Q64-Zh-hIg"/>
-                                    <segue destination="Hso-Wb-ZFK" kind="show" id="4cN-c0-g9w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS8-a6-n2q">
+                                <rect key="frame" x="287" y="628" width="40" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="goToBookmarks" image="20151129_565a5f67ed314-210x210"/>
+                                <connections>
+                                    <segue destination="Hso-Wb-ZFK" kind="show" id="TCa-lm-u4u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -371,9 +378,10 @@
     </scenes>
     <resources>
         <image name="20151129_565a5ec9629b6" width="512" height="512"/>
+        <image name="20151129_565a5f67ed314-210x210" width="210" height="210"/>
         <image name="e25410abfb8a15e78db7125a36e0cdde_books-outline-hospital-outline-pictures-of-books_894-894" width="894" height="894"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4cN-c0-g9w"/>
+        <segue reference="TCa-lm-u4u"/>
     </inferredMetricsTieBreakers>
 </document>

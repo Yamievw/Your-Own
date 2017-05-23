@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 
 class BookmarksViewController: UIViewController, UITableViewDelegate  {
@@ -16,16 +18,28 @@ class BookmarksViewController: UIViewController, UITableViewDelegate  {
     var book: Book?
     var books = [Book]()
     
-    var ref: DatabaseReference!
-    ref = Database.database().reference()
-    
-
+    var books_database: DatabaseReference!
+    var databaseHandle: DatabaseHandle?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        books_database = Database.database().reference()
+        
+        let user =  Auth.auth().currentUser?.uid
+        
+        // get name of the book
+        books_database?.child(user!).child("Users").child("Bookmarks").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let dictionary = snapshot.value as? NSDictionary
+            
+            self.book?.title = dictionary?.allKeys as! Any as! String
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +57,7 @@ class BookmarksViewController: UIViewController, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BookmarksTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BookmarksTableViewCell
         
-        cell.bookCover.imageFromURL(url: books[indexPath.row].imageLink!)
+        cell.bookTitle.text = (book?.title)[indexPath.row]
         
         return cell
     }
