@@ -59,6 +59,7 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
                 for item in items {
                     if let volumeInfo = item["volumeInfo"] as? [String: AnyObject] {
                         let book = Book()
+                        
                         book.title = volumeInfo["title"] as? String
                         
                         if let imageLinks = volumeInfo["imageLinks"] as? [String: String] {
@@ -71,6 +72,9 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
 
                         if let description = volumeInfo["description"] as? String {
                             book.description = description
+                        }
+                        if let id = item["id"] as? String {
+                            book.id = id
                         }
                         
                         self.books.append(book)
@@ -92,8 +96,9 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BookCollectionViewCell
-        
-        cell.bookImage.imageFromURL(url: books[indexPath.item].imageLink!)
+        if let imageLink = books[indexPath.item].imageLink {
+            cell.bookImage.imageFromURL(url: imageLink)
+        }
         
         return cell
     }

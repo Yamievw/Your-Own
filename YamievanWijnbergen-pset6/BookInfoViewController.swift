@@ -60,9 +60,10 @@ class BookInfoViewController: UIViewController {
             // Save book to Firebase Database.
             if self.book?.title != ""  {
                 
-                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.title)!).child("author").setValue(self.book?.authors)
-                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.title)!).child("image").setValue(self.book?.imageLink)
-                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.title)!).child("description").setValue(self.book?.description)
+                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.id)!).child("author").setValue(self.book?.authors)
+                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.id)!).child("image").setValue(self.book?.imageLink)
+                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.id)!).child("description").setValue(self.book?.description)
+                self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.id)!).child("title").setValue(self.book?.title)
             }
             else {
                 print ("book was not saved properly")

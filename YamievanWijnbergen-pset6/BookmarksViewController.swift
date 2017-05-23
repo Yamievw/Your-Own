@@ -11,11 +11,10 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class BookmarksViewController: UIViewController, UITableViewDelegate  {
+class BookmarksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var book: Book?
     var books = [Book]()
     
     var books_database: DatabaseReference!
@@ -35,9 +34,22 @@ class BookmarksViewController: UIViewController, UITableViewDelegate  {
         // get name of the book
         books_database?.child(user!).child("Users").child("Bookmarks").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            let dictionary = snapshot.value as? NSDictionary
+            guard let dictionary = snapshot.value as? [String : [String : Any]] else {
+                return
+            }
             
-            self.book?.title = dictionary?.allKeys as! Any as! String
+            for id in dictionary.keys {
+                guard let item = dictionary[id] else {
+                    return
+                }
+                
+                let book = Book()
+                book.id = id
+                book.title = item["title"] as? String
+                book.imageLink = item["image"] as? String
+                self.books.append(book)
+            }
+            self.tableView.reloadData()
         })
         
     }
@@ -50,14 +62,23 @@ class BookmarksViewController: UIViewController, UITableViewDelegate  {
     
     
     // MARK: Create TableView.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.books.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BookmarksTableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BookmarksTableViewCell
         
-        cell.bookTitle.text = (book?.title)[indexPath.row]
+        cell.bookTitle.text = books[indexPath.row].title
+        
+        if let imageLink = books[indexPath.item].imageLink {
+            cell.bookCover.imageFromURL(url: imageLink)
+        }
+        
         
         return cell
     }
