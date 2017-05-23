@@ -12,6 +12,7 @@ class BookmarksTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookCover: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

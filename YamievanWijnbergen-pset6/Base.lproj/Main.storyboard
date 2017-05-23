@@ -54,7 +54,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pde-Ab-cqp"/>
-                                    <segue destination="3oZ-TQ-soM" kind="show" identifier="homeScreen" id="KZQ-9V-Z7c"/>
+                                    <segue destination="3oZ-TQ-soM" kind="show" identifier="homeScreen" id="WBN-28-NJx"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="e25410abfb8a15e78db7125a36e0cdde_books-outline-hospital-outline-pictures-of-books_894-894" translatesAutoresizingMaskIntoConstraints="NO" id="Wmp-4d-QhN">
@@ -184,12 +184,19 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hso-Wb-ZFK" id="d68-w4-AzP"/>
+                                    <outlet property="delegate" destination="Hso-Wb-ZFK" id="rfM-47-o9k"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="cKl-vM-lw2" id="tqa-F6-ATq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8k-ZI-qM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,7 +257,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="bookImage" destination="0hz-ow-FlT" id="Tjo-Md-pdJ"/>
-                                            <segue destination="Fmn-QC-Lpw" kind="show" identifier="bookInfo" id="7t4-0F-28e"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -275,6 +281,7 @@
                     <connections>
                         <outlet property="BookCollectionView" destination="yPC-T8-F4b" id="bfc-46-MZX"/>
                         <outlet property="searchBar" destination="d0A-sT-M2o" id="TX4-QK-tdP"/>
+                        <segue destination="Fmn-QC-Lpw" kind="show" identifier="bookInfo" id="UYY-x9-kDG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VP-nH-J03" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,38 +304,41 @@
                                 <rect key="frame" x="67" y="129" width="240" height="231"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIO-Sv-3XP">
-                                <rect key="frame" x="149" y="77" width="77" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIO-Sv-3XP">
+                                <rect key="frame" x="16" y="91" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tK-jL-bcr">
-                                <rect key="frame" x="16" y="431" width="343" height="173"/>
+                                <rect key="frame" x="16" y="431" width="343" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXO-ey-JzA">
-                                <rect key="frame" x="154" y="369" width="72" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXO-ey-JzA">
+                                <rect key="frame" x="16" y="372" width="343" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rU-a0-3Rr">
+                                <rect key="frame" x="335" y="627" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="20151129_565a5ec9629b6"/>
+                                <connections>
+                                    <action selector="bookmarkBook:" destination="Fmn-QC-Lpw" eventType="touchUpInside" id="Q64-Zh-hIg"/>
+                                    <segue destination="Hso-Wb-ZFK" kind="show" id="4cN-c0-g9w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="bookmarks" id="mjv-JL-NTr">
-                            <connections>
-                                <segue destination="Hso-Wb-ZFK" kind="show" id="1bM-OE-IGc"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookAuthors" destination="tXO-ey-JzA" id="kkJ-3L-fdb"/>
                         <outlet property="bookCover" destination="vnr-iV-tDF" id="S0a-oX-pY3"/>
@@ -338,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AI-aa-BeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="104"/>
+            <point key="canvasLocation" x="2837.5999999999999" y="103.89805097451276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="in6-yf-qMP">
@@ -360,9 +370,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="20151129_565a5ec9629b6" width="512" height="512"/>
         <image name="e25410abfb8a15e78db7125a36e0cdde_books-outline-hospital-outline-pictures-of-books_894-894" width="894" height="894"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1bM-OE-IGc"/>
+        <segue reference="4cN-c0-g9w"/>
     </inferredMetricsTieBreakers>
 </document>

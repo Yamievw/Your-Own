@@ -16,7 +16,16 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Keep user logged in.
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "homeScreen", sender: nil)
+            }
+        }
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,22 +37,11 @@ class LogInViewController: UIViewController {
     @IBAction func loginDidTouch(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error == nil {
-                print("login successful")
+                self.loginFail()
             
                 if Auth.auth().currentUser != nil {
-                
-                    self.performSegue(withIdentifier: "homeScreen", sender: self)
+                    self.performSegue(withIdentifier: "homeScreen", sender: nil)
                 }
-//            } else {
-//                // let user know he/she failed to login
-//                let alertcontroller = UIAlertController(title: "Failed to login.", message: "Please, try again.",preferredStyle: UIAlertControllerStyle.alert)
-//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-//                }
-//                alertcontroller.addAction(OKAction)
-//                self.present(alertcontroller, animated: true, completion:nil)
-//                return
-//            }
-//        }
             }
         }
     }
@@ -70,18 +68,33 @@ class LogInViewController: UIViewController {
                                          style: .default)
         
         // Add the text field in alertview.
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
+        alertController.addTextField { textField in
             textField.text = ""
             textField.placeholder = "Enter email"
-        })
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
+        }
+            
+        alertController.addTextField { textField in
             textField.text = ""
+            textField.isSecureTextEntry = true
             textField.placeholder = " Password "
-        })
+        }
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    // Alert to let user know login failed.
+    func loginFail() {
+    let alertcontroller = UIAlertController(title: "Failed to login.", message: "Please, try again.",preferredStyle: UIAlertControllerStyle.alert)
+    
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+        }
+        
+        alertcontroller.addAction(OKAction)
+        self.present(alertcontroller, animated: true, completion:nil)
+        
+        return
     }
 }

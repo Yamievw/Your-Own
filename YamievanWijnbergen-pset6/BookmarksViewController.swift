@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-class BookmarksViewController: UIViewController {
+class BookmarksViewController: UIViewController, UITableViewDelegate  {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var book: Book?
+    var books = [Book]()
+    
+    var ref: DatabaseReference!
+    ref = Database.database().reference()
+    
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +33,18 @@ class BookmarksViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    // MARK: Create TableView.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.books.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BookmarksTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BookmarksTableViewCell
+        
+        cell.bookCover.imageFromURL(url: books[indexPath.row].imageLink!)
+        
+        return cell
+    }
 }

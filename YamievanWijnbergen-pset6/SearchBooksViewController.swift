@@ -18,8 +18,6 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
     @IBOutlet weak var BookCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -45,7 +43,7 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
         let url = URL(string: request!)
         
         
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let data = data else {
                 return
             }
@@ -57,13 +55,14 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
                 
                 self.books = []
                 
+                // Get elements from API
                 for item in items {
                     if let volumeInfo = item["volumeInfo"] as? [String: AnyObject] {
                         let book = Book()
                         book.title = volumeInfo["title"] as? String
                         
                         if let imageLinks = volumeInfo["imageLinks"] as? [String: String] {
-                            book.imageURL = imageLinks["thumbnail"]
+                            book.imageLink = imageLinks["thumbnail"]
                         }
                         
                         if let authors = volumeInfo["authors"] as? [String] {
@@ -84,6 +83,7 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
         }
         .resume()
     }
+    
 
     // MARK: Create Collection View.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,27 +93,33 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BookCollectionViewCell
         
-        cell.bookImage.imageFromURL(url: books[indexPath.row].imageURL!)
+        cell.bookImage.imageFromURL(url: books[indexPath.item].imageLink!)
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        book = books[indexPath.item]
+        self.performSegue(withIdentifier: "bookInfo", sender: nil)
 
+    }
+
+    // Segue to next viewcontroller to get info on specific book
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination.isKind(of: BookInfoViewController.self) {
-            let detailsVC = segue.destination as! BookInfoViewController
-            detailsVC.Book = self.book
+        if let viewController = segue.destination as? BookInfoViewController {
+            viewController.book = self.book
         }
     }
 }
 
+// Function to create image from url.
 extension UIImageView {
     
     func imageFromURL(url: String) {
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print ("Cant load imagesURL \(error)")
                 } else {
                     if let image = UIImage(data: data!) {
                         DispatchQueue.main.async {

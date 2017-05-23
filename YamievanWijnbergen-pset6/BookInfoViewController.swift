@@ -15,25 +15,35 @@ class BookInfoViewController: UIViewController {
     @IBOutlet weak var bookCover: UIImageView!
     @IBOutlet weak var bookDescription: UITextView!
     
-    var Book: Book?
+    var book: Book?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Book != nil {
-            bookCover.imageFromURL(url: (Book?.imageURL)!)
-            bookTitle.text = (Book?.title)!
-            bookAuthors.text = (Book?.authors)!
-            bookDescription.text = (Book?.description)!
-        }
-
         // Do any additional setup after loading the view.
+        self.update()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // Update viewcontroller to elements of selected book.
+    func update() {
+            bookCover.imageFromURL(url: (book?.imageLink)!)
+            bookTitle.text = (book?.title)!
+            bookAuthors.text = (book?.authors)!
+            bookDescription.text = (book?.description)!
+        
+        print (book!)
+    }
+    
+    // Add books to bookmarklist.
+    @IBAction func bookmarkBook(_ sender: Any) {
+    }
+
     
 
     /*
