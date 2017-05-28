@@ -19,7 +19,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Keep user logged in.
+        // Keep user logged in when closing app.
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.performSegue(withIdentifier: "homeScreen", sender: nil)
@@ -42,7 +42,7 @@ class LogInViewController: UIViewController {
                 self.loginFail()
             
                 if Auth.auth().currentUser != nil {
-                    self.performSegue(withIdentifier: "homeScreen", sender: nil)
+                    self.performSegue(withIdentifier: "homeScreen", sender: self)
                 }
             }
         }
