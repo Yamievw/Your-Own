@@ -46,8 +46,6 @@ class BookInfoViewController: UIViewController {
             bookTitle.text = (book?.title)!
             bookAuthors.text = (book?.authors)!
             bookDescription.text = (book?.description)!
-        
-        print (book!)
     }
     
     // Add books to bookmarklist.

@@ -51,7 +51,6 @@ class SearchBooksViewController: UIViewController, UISearchBarDelegate, UICollec
             }
             
             let json = try! JSONSerialization.jsonObject(with: data, options: [])
-            print (json)
             if let rootDictionary = json as? [String: Any],
                 let items = rootDictionary["items"] as? [[String:Any]] {
                 

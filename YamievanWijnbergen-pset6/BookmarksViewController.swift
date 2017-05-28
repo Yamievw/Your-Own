@@ -83,7 +83,7 @@ class BookmarksViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let removeBook = books[indexPath.row].id
-            //removeBook.books_database?.removeValue()
+            removeBook.books_database?.removeValue()
         }
        self.tableView.reloadData()
     }
