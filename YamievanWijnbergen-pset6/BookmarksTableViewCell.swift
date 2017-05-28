@@ -2,6 +2,8 @@
 //  BookmarksTableViewCell.swift
 //  YamievanWijnbergen-pset6
 //
+//  TableViewCell to display bookcover and title in bookmarkslist.
+//
 //  Created by Yamie van Wijnbergen on 21/05/2017.
 //  Copyright © 2017 Yamie van Wijnbergen. All rights reserved.
 //

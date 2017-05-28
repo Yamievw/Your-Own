@@ -2,6 +2,8 @@
 //  LogInViewController.swift
 //  YamievanWijnbergen-pset6
 //
+//  ViewController where for the user to log in or register (using Firebase)
+//
 //  Created by Yamie van Wijnbergen on 19/05/2017.
 //  Copyright © 2017 Yamie van Wijnbergen. All rights reserved.
 //

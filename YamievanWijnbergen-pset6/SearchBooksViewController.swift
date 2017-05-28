@@ -2,6 +2,8 @@
 //  SearchBooksViewController.swift
 //  YamievanWijnbergen-pset6
 //
+//  ViewController to search for a book using the Google Books API
+//
 //  Created by Yamie van Wijnbergen on 19/05/2017.
 //  Copyright © 2017 Yamie van Wijnbergen. All rights reserved.
 //

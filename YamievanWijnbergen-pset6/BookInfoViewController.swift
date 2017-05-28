@@ -2,6 +2,9 @@
 //  BookInfoViewController.swift
 //  YamievanWijnbergen-pset6
 //
+//  ViewController to get information on a specific book using Google Books API
+//  User can also save a book to the bookmark-list.
+//
 //  Created by Yamie van Wijnbergen on 21/05/2017.
 //  Copyright © 2017 Yamie van Wijnbergen. All rights reserved.
 //
@@ -25,8 +28,7 @@ class BookInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+
         self.update()
         books_database = Database.database().reference()
 
@@ -50,7 +52,7 @@ class BookInfoViewController: UIViewController {
     
     // Add books to bookmarklist.
     @IBAction func bookmarkBook(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Save book", message: " Add to bookmarks", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Save book", message: "Add to bookmark", preferredStyle: UIAlertControllerStyle.alert)
         
         let saveAction = UIAlertAction(title: "Save",style: .default) { action in
             
@@ -66,7 +68,7 @@ class BookInfoViewController: UIViewController {
                 self.books_database?.child(user!).child("Users").child("Bookmarks").child((self.book?.id)!).child("title").setValue(self.book?.title)
             }
             else {
-                print ("book was not saved properly")
+                print ("Error: something went wrong when adding book to database")
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
@@ -77,17 +79,4 @@ class BookInfoViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
         
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

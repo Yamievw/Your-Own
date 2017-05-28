@@ -88,7 +88,7 @@
         <!--Home-->
         <scene sceneID="B2e-mO-WU8">
             <objects>
-                <viewController title="Home" id="3oZ-TQ-soM" sceneMemberID="viewController">
+                <viewController title="Home" id="3oZ-TQ-soM" customClass="WelcomeScreenViewController" customModule="YamievanWijnbergen_pset6" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="88i-7z-y2m"/>
                         <viewControllerLayoutGuide type="bottom" id="Gex-w9-j1I"/>
@@ -130,6 +130,18 @@
                                 </state>
                                 <connections>
                                     <segue destination="Hso-Wb-ZFK" kind="show" id="nek-C5-6Wu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD1-3D-Meq">
+                                <rect key="frame" x="138" y="614" width="98" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.55021454020000005" green="0.55021454020000005" blue="0.55021454020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutButton:" destination="3oZ-TQ-soM" eventType="touchUpInside" id="RGw-23-bq6"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="logIn" id="7kY-ai-deO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -382,6 +394,7 @@
         <image name="e25410abfb8a15e78db7125a36e0cdde_books-outline-hospital-outline-pictures-of-books_894-894" width="894" height="894"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TCa-lm-u4u"/>
+        <segue reference="7kY-ai-deO"/>
+        <segue reference="nek-C5-6Wu"/>
     </inferredMetricsTieBreakers>
 </document>
